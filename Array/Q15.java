@@ -1,16 +1,21 @@
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
-class Q15 {
-    public List<List<Integer>> go(int[] nums) {
+
+class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
         Arrays.sort(nums);
         List<List<Integer>> ans = new ArrayList<>();
         int i = 0;
-        while (i < nums.length -2) {
+        while (i < nums.length - 2) {
+            if (i > 0 && nums[i] == nums[i - 1]) {
+                i++;
+                continue;
+            }
             int start = i + 1;
             int last = nums.length - 1;
             while (start < last) {
-                int sum = nums[start] + nums[last] + nums[i];
+                long sum = (long)nums[start] + nums[last] + nums[i];
                 if (sum == 0) {
                     List<Integer> obj = new ArrayList<>();
                     obj.add(nums[i]);
@@ -19,22 +24,20 @@ class Q15 {
                     ans.add(obj);
                     start++;
                     last--;
-                }
-                else if (sum > 0) {
+                    while (start < last && nums[start] == nums[start - 1]) {
+                        start++;
+                    }
+                    while (start < last && nums[last] == nums[last + 1]) {
+                        last--;
+                    }
+                } else if (sum > 0) {
                     last--;
-                }
-                else {
+                } else {
                     start++;
                 }
             }
             i++;
         }
         return ans;
-    }
-
-    public static void main(String[] args) {
-        Q15 val = new Q15();
-        int[] arr = { -1, 0, 1, 2, -1, -4 };
-        System.out.println(val.go(arr));
     }
 }

@@ -8,21 +8,21 @@ class Q18 {
         int i = 0;
         List<List<Integer>> mainpair = new ArrayList<>();
         while (i < nums.length) {
-            if (i > 0 && nums[i] == nums[i-1]){
+            if (i > 0 && nums[i] == nums[i - 1]) {
                 i++;
                 continue;
             }
-            int j = i+1;
+            int j = i + 1;
             while (j < nums.length) {
-                if (j > i+1 && nums[j] == nums[j -1]){
+                if (j > i + 1 && nums[j] == nums[j - 1]) {
                     j++;
                     continue;
                 }
                 int start = j + 1;
-                int last = nums.length - 1;
+                int last= nums.length - 1;
                 while (start < last) {
                     List<Integer> pair = new ArrayList<>();
-                    int sum = nums[i] + nums[start] + nums[last] + nums[j];
+                    long sum = (long) nums[i] + nums[start] + nums[last] + nums[j];
                     if (sum < target) {
                         start++;
                     } else if (sum > target) {
@@ -35,14 +35,13 @@ class Q18 {
                         mainpair.add(pair);
                         start++;
                         last--;
-                        while(start < last && nums[start] == nums[start -1]){
+                        while (start < last && nums[start] == nums[start - 1]) {
                             start++;
-                        };
-                        while(start < last && nums[last] == nums[last +1]){
-                            last--;
-                        };
-
+                        }
                         
+                        while (start < last && nums[last] == nums[last + 1]) {
+                            last--;
+                        }
                     }
                 }
                 j++;
@@ -50,12 +49,5 @@ class Q18 {
             i++;
         }
         return mainpair;
-    }
-    
-
-    public static void main(String[] args) {
-        Q18 val = new Q18();
-        int[] nums = {1,0,-1,0,-2,2 };
-        System.out.println(val.fourSum(nums, 0));
     }
 }

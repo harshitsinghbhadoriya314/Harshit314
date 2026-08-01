@@ -1,5 +1,4 @@
 class Q26 {
-
     public static int removeDuplicates(int[] nums) {
         int start = 0;
         int last = 1;
