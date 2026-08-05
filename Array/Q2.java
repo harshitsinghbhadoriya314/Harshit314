@@ -1,4 +1,4 @@
-class Solution {
+class Q2 {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
      int arr[] = merge(nums1,nums2);
      if (arr.length % 2 != 0){ //odd
