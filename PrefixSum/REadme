@@ -1,0 +1,32 @@
+social-platform-backend/
+├── apps/
+│   ├── api-gateway/            # routing, auth middleware, rate limiting
+│   ├── auth-service/            # JWT, OAuth, RBAC
+│   ├── user-service/            # profiles, settings
+│   ├── post-service/            # CRUD + DB transactions
+│   ├── feed-service/            # caching, fan-out logic
+│   ├── comment-service/
+│   ├── notification-service/    # queue consumer, email/push
+│   ├── messaging-service/       # WebSocket server
+│   ├── media-service/           # S3 upload, image processing
+│   └── search-service/          # Elasticsearch indexing/query
+│
+├── packages/
+│   ├── shared-types/            # DTOs, event schemas
+│   ├── shared-utils/             # logger, error handler, validators
+│   └── event-contracts/          # Kafka topic schemas
+│
+├── infra/
+│   ├── docker/                   # per-service Dockerfiles
+│   ├── k8s/                       # deployment, service, ingress YAMLs
+│   ├── terraform/                 # cloud infra as code
+│   └── monitoring/                # Prometheus/Grafana configs
+│
+├── tests/
+│   ├── unit/
+│   ├── integration/
+│   └── e2e/
+│
+├── docker-compose.yml            # spin up everything locally
+├── .github/workflows/            # CI/CD pipelines
+└── README.md

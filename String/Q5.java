@@ -1,23 +1,31 @@
 class Q5 {
-    public String longestPalindrome(String s) {
-        int start = 0;
-        int last = s.length()-1;
-        String longString = "";
-        while (start < last) {
-            if (s.length() < 3) {
-                return s.substring(0, last - 1);
-            } else if (s.charAt(start) != s.charAt(last)) {
-                start++;
-                last--;
-            } else {
-                return "";
-            }
+    public boolean ISPalindrome(String s) {
+      int start = 0;
+      int last = s.length()-1;
+      while(start <= last){
+        if (s.charAt(start) != s.charAt(last)) {
+            return false;
         }
-        return longString;
+         start++;
+         last--;
+
+      }
+      return true;
     }
 
-    public static void main(String[] args) {
-        Q5 v = new Q5();
-        System.out.println(v.longestPalindrome("aaaaaa"));
+    public String longestPalindrome(String s) {
+        int left = 0;
+        String longstr = "";
+        while (left <= s.length()) {
+           int right = left + 1;
+            while (right <= s.length()) {
+                if (ISPalindrome(s.substring(left, right)) && s.substring(left, right).length() > longstr.length()) {
+                    longstr = s.substring(left, right);
+                }
+                right++;
+            }
+            left++;
+        }
+        return longstr;
     }
 }

@@ -1,6 +1,7 @@
 import java.util.*;
 
 class phone {
+    // recursive heavy
     public List<String> letterCombinations(String digits) {
         HashMap<Integer, String> val = new HashMap<>();
         val.put(2, "abc");
@@ -39,7 +40,6 @@ class phone {
     return array;
 
     }
-
     public static void main(String[] args) {
         phone val = new phone();
         System.out.println(val.letterCombinations("234"));
